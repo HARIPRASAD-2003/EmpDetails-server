@@ -8,11 +8,11 @@ app.use(express.json());
 
 const db = mysql.createConnection({
 
-    host: 'database-1.c0pwu6ca2ign.ap-south-1.rds.amazonaws.com',
-    port: 3306,
-    user: 'admin',
-    password: 'rootadmin',
-    database: 'fullstack',
+    host: 'localhost',
+    // port: 3306,
+    user: 'root',
+    password: '',
+    database: 'fullsatck',
 })
 
 // db.connect();
