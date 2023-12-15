@@ -23,7 +23,7 @@ app.get('/check', async(req, res)=>{
 // Assuming you have a query function in your db.js module
 
 app.get('/getEmp', async (req, res) => {
-  const sql = "SELECT *, TO_CHAR(dob, 'DD-MM-YYYY') AS dob, EXTRACT(YEAR FROM AGE(dob)) AS age FROM employeedetails;";
+  const sql = "SELECT *, TO_CHAR(dob, 'DD-MM-YYYY') AS dob, EXTRACT(YEAR FROM AGE(dob)) AS age FROM employeedetails ORDER BY id;";
 
   try {
     const result = await query(sql);
