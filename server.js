@@ -8,15 +8,13 @@ const { query } = require('./db');
 const app = express();
 // app.use(cors());
 app.use(express.json());
-
-// const db = mysql.createConnection({
-
-//     host: 'localhost',
-//     port: 3306,
-//     user: 'root',
-//     password: '',
-//     database: 'fullsatck',
-// })
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://emp-details-client.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+  });
 
 // db.connect();
 app.get('/', ()=>{
