@@ -92,7 +92,7 @@ app.post('/newEmp', async (req, res) => {
         const sql = `
         UPDATE employeeDetails
         SET emp_name = $1, dept = $2, dob = $3, des = $4, sal = $5, address = $6
-        WHERE id = $7;
+        WHERE id = ${id};
         `;
     
         const result = await query(sql, [name, dept, dob, des, sal, address]);
