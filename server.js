@@ -83,6 +83,26 @@ app.post('/newEmp', async (req, res) => {
       res.status(500).send('Internal Server Error');
     }
   });
+
+  app.post('/update', async(req, res)=>{
+    const {id, name, dept, des, sal, dob, address } = req.body;
+    try {
+        console.log(req.body);
+    
+        const sql = `
+          UPDATE employeeDetails SET(name=$1, dept=$2, dob=$3, des=$4, sal=$5, address=$6) WHERE id=${id}
+          RETURNING *;
+        `;
+    
+        const result = await query(sql, [name, dept, dob, des, sal, address]);
+    
+        // Assuming result.rows is the newly inserted employee data
+        res.json(result.rows);
+      } catch (error) {
+        console.error('Error adding new employee:', error);
+        res.status(500).send('Internal Server Error');
+      }
+  })
   
 const port = process.env.PORT || 5000;
 app.listen(port, ()=>{
