@@ -90,8 +90,10 @@ app.post('/newEmp', async (req, res) => {
         console.log(req.body);
     
         const sql = `
-          UPDATE employeeDetails SET(name=$1, dept=$2, dob=$3, des=$4, sal=$5, address=$6) WHERE id=${id}
-          RETURNING *;
+        UPDATE employeeDetails
+        SET name = $1, dept = $2, dob = $3, des = $4, sal = $5, address = $6
+        WHERE id = $7;
+        RETURNING *;
         `;
     
         const result = await query(sql, [name, dept, dob, des, sal, address]);
