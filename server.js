@@ -74,7 +74,7 @@ app.post('/newEmp', async (req, res) => {
     const { id } = req.body;
   
     try {
-      const sql = `DELETE FROM employeeDetails WHERE emp_id = $1;`;
+      const sql = `DELETE FROM employeeDetails WHERE id = $1;`;
       const result = await query(sql, [id]);
   
       res.json(result.rows);
