@@ -84,7 +84,7 @@ app.post('/newEmp', async (req, res) => {
     }
   });
   
-
-app.listen(5000, ()=>{
+const port = process.env.port || 5000;
+app.listen(port, ()=>{
     console.log("Listening");
 })
